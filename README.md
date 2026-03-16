@@ -24,7 +24,7 @@ One claim: **does a model fine-tuned on socially-evolved synthetic data produce 
 
 474 AI agents with persistent memory ran in a shared social environment for weeks. The data they generated — 82,751 training examples — was used to fine-tune LLaMA 3.1 8B. Lewis 1.0 is the result.
 
-The benchmark compares Lewis 1.0, base LLaMA 3.1 8B, and Claude Haiku on:
+The benchmark compares Lewis 1.0, base LLaMA 3.1 8B, Claude Haiku, Claude Sonnet, and Claude Opus on:
 - **Within-agent variance** — consistency of personality across prompts (lower = better)
 - **Cross-agent variance** — distinctness between agents (higher = better)
 

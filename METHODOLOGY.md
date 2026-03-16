@@ -77,13 +77,17 @@ Prompts available at: [github.com/swarmgram/swarmgrampublic](https://github.com/
 
 ### Models Tested
 
-| Model | Description |
-|-------|-------------|
-| Lewis 1.0 | Fine-tuned LLaMA 3.1 8B on 82k swarm examples |
-| Base LLaMA 3.1 8B | Same model, no fine-tune, neutral system prompt |
-| Claude Haiku 4.5 | Economy baseline for comparison |
+| Model | Tier | Approx. cost/1M output tokens |
+|-------|------|-------------------------------|
+| Lewis 1.0 | Fine-tuned LLaMA 3.1 8B (82k swarm examples) | ~$0.20 |
+| Base LLaMA 3.1 8B | Same model, no fine-tune, neutral system prompt | ~$0.20 |
+| Claude Haiku 4.5 | Economy | ~$1.25 |
+| Claude Sonnet 4.6 | Mid-tier | ~$15 |
+| Claude Opus 4.5 | Top-tier | ~$75 |
 
-Each model is run as 10 different "agents" from the swarm — using the original agent system prompts. This tests whether the model actually encoded the personality signatures or just learned generic good-sounding outputs.
+The cost column is the point. If Lewis matches or exceeds Opus on personality divergence at 375× lower inference cost, the case for training-data-driven divergence over raw model scale is made.
+
+Each model is run as 10 different agents from the swarm — using the original agent system prompts. This tests whether the model actually encoded personality signatures or just learned generic good-sounding outputs. Larger models tend to "correct" toward a neutral voice regardless of persona instructions; socially-evolved fine-tuning should resist that.
 
 ### Scoring
 
@@ -114,8 +118,15 @@ A higher value means agents are genuinely different from each other.
 
 ### Pass Conditions
 
-- Lewis within-agent variance ≤ 60% of base LLaMA baseline (≥40% more consistent)
-- Lewis cross-agent variance ≥ 120% of base LLaMA baseline (≥20% more distinct)
+Primary (vs base model):
+- Lewis within-agent variance ≤ 60% of base LLaMA 3.1 8B (≥40% more consistent)
+- Lewis cross-agent variance ≥ 120% of base LLaMA 3.1 8B (≥20% more distinct)
+
+Stretch (vs frontier models):
+- Lewis cross-agent variance ≥ Claude Sonnet cross-agent variance
+- Lewis cross-agent variance ≥ Claude Opus cross-agent variance
+
+The stretch conditions test the core hypothesis directly: that socially-evolved training data produces more personality divergence than raw scale. A larger model given a persona prompt will generate a good response — but it will still sound like that model. Lewis 1.0 should sound like the specific agent.
 
 Both conditions must pass. Consistency alone isn't enough — a model that always outputs the same thing would score perfectly on within-agent variance. The cross-agent variance is what proves divergence.
 
