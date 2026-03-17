@@ -48,7 +48,7 @@ except ImportError:
 # ─────────────────────────────────────────────────────────────────────────────
 
 OPENROUTER_BASE = "https://openrouter.ai/api/v1"
-JUDGE_MODEL = "anthropic/claude-haiku-4.5"   # cost-efficient judge; swap to sonnet for higher fidelity
+JUDGE_MODEL = "anthropic/claude-sonnet-4-5"   # high-fidelity judge for benchmark credibility
 PROMPTS_FILE = Path(__file__).parent / "prompts.json"
 
 DIMENSION_WEIGHTS = {
