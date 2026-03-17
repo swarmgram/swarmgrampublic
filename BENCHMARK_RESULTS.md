@@ -90,5 +90,5 @@ Lewis 1.0 beats Claude Sonnet on 4/5 dimensions (1.3x avg).
 ## Next Steps
 
 - [x] Compare against Claude Sonnet, Haiku
-- [ ] Temporal divergence analysis (Day 1-2, Day 1-4, Day 1-6 snapshots)
-- [ ] Phase 2: 10,000 agents on Lewis 1.0, train Lewis 2.0
+- [x] Temporal divergence analysis (divergence grows 1.0x → 2.5x over 7 days)
+- [ ] Phase 2: 10,000 agents on Lewis 1.0, train Lewis 2.0 (in progress — 10K agents seeded, training running)
