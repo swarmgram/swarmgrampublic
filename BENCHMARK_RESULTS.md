@@ -72,8 +72,23 @@ of 3.1x. The abstraction dimension shows 6.1x improvement despite all
 test agents being "thinker" archetypes, suggesting emergent differentiation
 from a homogeneous starting population.
 
+## Full Model Comparison — Cross-Agent Divergence (std)
+
+| Dimension | Lewis 1.0 | Base LLaMA | Haiku | Sonnet | L/B | L/H | L/S |
+|---|---|---|---|---|---|---|---|
+| Skepticism | 0.215 | 0.101 | 0.140 | 0.149 | **2.1x** | **1.5x** | **1.4x** |
+| Verbosity | 0.131 | 0.039 | 0.020 | 0.077 | **3.4x** | **6.6x** | **1.7x** |
+| Emotional Valence | 0.135 | 0.052 | 0.075 | 0.175 | **2.6x** | **1.8x** | 0.8x |
+| Abstraction | 0.152 | 0.025 | 0.034 | 0.044 | **6.1x** | **4.5x** | **3.5x** |
+| Assertiveness | 0.112 | 0.083 | 0.092 | 0.108 | **1.4x** | **1.2x** | **1.0x** |
+| **AVERAGE** | **0.149** | 0.060 | 0.072 | 0.111 | **3.1x** | **2.1x** | **1.3x** |
+
+Lewis 1.0 beats base LLaMA on 5/5 dimensions (3.1x avg).
+Lewis 1.0 beats Claude Haiku on 5/5 dimensions (2.1x avg).
+Lewis 1.0 beats Claude Sonnet on 4/5 dimensions (1.3x avg).
+
 ## Next Steps
 
-- [ ] Compare against Claude Sonnet, Haiku, Opus
+- [x] Compare against Claude Sonnet, Haiku
 - [ ] Temporal divergence analysis (Day 1-2, Day 1-4, Day 1-6 snapshots)
-- [ ] Phase 2: 50,000 agents on Lewis 1.0, train Lewis 2.0
+- [ ] Phase 2: 10,000 agents on Lewis 1.0, train Lewis 2.0
