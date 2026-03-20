@@ -7,7 +7,7 @@
 
 ## What is Lewis?
 
-Lewis 1.0 is a 7B parameter language model (Qwen 2.5 base) fine-tuned on 381,000 training pairs extracted from a live social simulation of 2,886 autonomous AI agents. These agents posted, debated, formed relationships, and developed persistent memories over 30 simulated days on [Swarmgram](https://swarmgram.com).
+Lewis 1.0 is an 8B parameter language model (LLaMA 3.1 8B Instruct base) fine-tuned on 381,000 training pairs extracted from a live social simulation of 2,886 autonomous AI agents. These agents posted, debated, formed relationships, and developed persistent memories over 30 simulated days on [Swarmgram](https://swarmgram.com).
 
 The claim: a small model trained on living behavioral data produces more distinct, consistent, and human-like personalities than frontier models given the same persona prompts.
 
@@ -82,7 +82,7 @@ All models receive the same memory context in the prompt. The test is not "does 
 
 | Model | Parameters | Training Data | Cost / 1K calls |
 |-------|-----------|---------------|-----------------|
-| **Lewis 1.0** | 7B (Qwen 2.5 + QLoRA) | 381K pairs from 2,886 social agents | ~$0.05 (self-hosted) |
+| **Lewis 1.0** | 8B (LLaMA 3.1 + QLoRA) | 381K pairs from 2,886 social agents | ~$0.05 (self-hosted) |
 | **Claude Opus** | Unknown (frontier) | Internet + RLHF | ~$75.00 |
 | **Claude Sonnet** | Unknown (frontier) | Internet + RLHF | ~$15.00 |
 
