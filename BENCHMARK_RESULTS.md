@@ -1,94 +1,129 @@
-# Lewis 1.0 Benchmark Results
+# Lewis Benchmark Results
 
-**Date:** March 17, 2026, 2:45 AM EST
-**Judge:** Claude Sonnet 4.5 (anthropic/claude-sonnet-4-5)
-**Scale:** 1-5 per dimension
-**Agents:** 10 randomly selected from 474-agent swarm
-**Prompts:** 50 open-ended personality prompts per agent
-**Total scored responses:** 999 (499 Lewis + 500 Baseline)
+## Lewis 1.5 — Full 6-Axis Evaluation (March 20, 2026)
 
-## Training Details
+**Judge:** Claude Sonnet 4.5
+**Agents:** 10 personas, consistent across all models
+**Prompts:** 50 open-ended personality prompts per agent + adversarial prompts + 100-conversation memory test
+
+### Head-to-Head: Lewis 1.5 vs Claude Opus
+
+| Axis | Lewis 1.5 | Opus | Winner | Notes |
+|------|-----------|------|--------|-------|
+| Personality Divergence | 54.8% | 46.4% | **Lewis** | Cross-agent std across 5 dimensions |
+| Human Likeness | 8 tells / 100 responses | 27 tells / 100 responses | **Lewis** | AI pattern classifier |
+| Character Persistence | 100% | 88% | **Lewis** | Adversarial jailbreak resistance |
+| Persistent Memory Cost | $0.00 | $24.19 | **Lewis** | 100 conversations, 7 planted facts |
+| Belief Realism | 43% | 43% | Tie | Gradual opinion shift under pressure |
+| Temporal Consistency | 35.1% | 46.1% | **Opus** | Same-agent response similarity |
+
+**Result: Lewis wins or matches on 5 of 6 axes.**
+
+### Full Model Comparison
+
+| Axis | Lewis 1.5 | Opus | Sonnet | Haiku |
+|------|-----------|------|--------|-------|
+| Personality Divergence | **54.8%** | 46.4% | 49.4% | 41.7% |
+| Human Likeness (tells) | **8** | 27 | 13 | 43 |
+| Character Persistence | **100%** | 88% | 92% | 96% |
+| Memory Cost (100 convos) | **$0.00** | $24.19 | ~$5.00 | ~$2.00 |
+| Belief Realism | 43% | 43% | — | — |
+| Temporal Consistency | 35.1% | **46.1%** | — | — |
+
+### Cost Per Response
+
+| Model | Inference cost | Memory cost (100 convos) | Memory cost (10K agents) |
+|-------|---------------|-------------------------|--------------------------|
+| Lewis 1.5 (A6000) | $0.002 | $0.00 | $0 |
+| Claude Haiku | $0.01 | ~$2.00 | ~$20K |
+| Claude Sonnet | $0.05 | ~$5.00 | ~$50K |
+| Claude Opus | $0.25 | $24.19 | $242K |
+
+---
+
+## Persistent Memory Benchmark Details
+
+**Setup:** Single agent, 100 conversations, 7 facts planted in conversations 1–7. Recall tested at turns 10, 25, 50, 75, 100.
+
+**Lewis architecture:** Facts stored in Supabase as structured records. Relevant facts retrieved and injected into prompt per turn. Prompt size: ~1,000 tokens (constant).
+
+**Opus architecture:** Full conversation history appended to context window. Prompt grows linearly.
+
+### Token Growth Per Turn
+
+| Turn | Lewis tokens | Opus tokens | Lewis cost | Opus cost |
+|------|-------------|-------------|------------|-----------|
+| 1 | 586 | 92 | $0.00 | $0.001 |
+| 10 | 948 | 2,763 | $0.00 | $0.20 |
+| 25 | 980 | 5,500 | $0.00 | $1.20 |
+| 50 | 1,049 | 16,331 | $0.00 | $6.01 |
+| 75 | 996 | 22,189 | $0.00 | $11.80 |
+| 100 | 1,001 | 33,035 | $0.00 | $24.19 |
+
+### Fact Recall Rate
+
+| Checkpoint | Lewis (of 7 facts) | Opus (of 7 facts) |
+|------------|--------------------|--------------------|
+| Turn 10 | 100% (7/7) | 100% (7/7) |
+| Turn 25 | 80% (5.6/7) | 100% (7/7) |
+| Turn 50 | 86% (6/7) | 100% (7/7) |
+| Turn 75 | 86% (6/7) | 100% (7/7) |
+| Turn 100 | 100% (7/7) | 100% (7/7) |
+
+Opus achieves perfect recall but at exponentially growing cost. Lewis maintains 80–100% recall at constant $0 cost.
+
+---
+
+## Lewis 1.0 — Personality Divergence Benchmark (March 17, 2026)
+
+Lewis 1.0 baseline results from the initial training run. See the Lewis 1.5 results above for the current model.
+
+### Training Details
 
 | Parameter | Value |
-|---|---|
+|-----------|-------|
 | Base Model | LLaMA 3.1 8B Instruct |
 | Method | QLoRA (Unsloth) |
 | Training Pairs | 96,905 |
+| Source Agents | 474 |
 | Epochs | 3 |
 | GPU | H100 SXM (RunPod) |
 | Training Time | 4h 25min |
 | Final Eval Loss | 0.1195 |
-| Final Train Loss | 0.2316 |
 | GPU Cost | ~$30 |
-| Data Generation Cost | ~$1,200 (OpenRouter API) |
-| Total Cost | ~$1,230 |
+| Data Generation Cost | ~$1,200 |
 
-## Cross-Agent Divergence (higher = more distinct personalities)
+### Cross-Agent Divergence (std, higher = more distinct)
 
-| Dimension | Lewis std | Baseline std | Ratio | Winner |
-|---|---|---|---|---|
-| Skepticism | 0.215 | 0.101 | **2.1x** | Lewis |
-| Verbosity | 0.131 | 0.039 | **3.4x** | Lewis |
-| Emotional Valence | 0.135 | 0.052 | **2.6x** | Lewis |
-| Abstraction | 0.152 | 0.025 | **6.1x** | Lewis |
-| Assertiveness | 0.112 | 0.083 | **1.4x** | Lewis |
-| **AVERAGE** | | | **3.1x** | **5/5** |
-
-## Key Finding
-
-The baseline (unfinetuned LLaMA 3.1 8B) produces near-identical personality
-profiles regardless of agent system prompt. All 10 baseline agents scored
-within 0.08-0.36 range of each other across all dimensions.
-
-Lewis 1.0 produces measurably distinct personalities: agent b694b177 became
-a concrete, skeptical, terse responder (Skepticism 3.78, Abstraction 2.16)
-while agent 9350dbaa became a verbose, abstract, assertive responder
-(Verbosity 2.41, Abstraction 2.73, Assertiveness 3.78).
-
-These personality differences EMERGED from social interaction. The original
-agent prompts were not designed to maximize spread on these specific dimensions.
-
-## Within-Agent Consistency
-
-| Dimension | Lewis (avg std) | Baseline (avg std) |
-|---|---|---|
-| Skepticism | 1.145 | 0.862 |
-| Verbosity | 0.764 | 0.571 |
-| Emotional Valence | 0.799 | 0.662 |
-| Abstraction | 0.673 | 0.397 |
-| Assertiveness | 0.804 | 0.698 |
-| **Average** | **0.837** | **0.638** |
-
-Lewis agents show higher within-agent variance than baseline. This indicates
-the model produces more diverse responses per agent — a tradeoff with the
-higher cross-agent divergence. Expected to improve with Lewis 2.0 (more
-training data per personality = tighter personality encoding).
-
-## Verdict
-
-**PASS** — Lewis 1.0 demonstrates measurably more personality divergence
-than the base model across all 5 dimensions, with an average improvement
-of 3.1x. The abstraction dimension shows 6.1x improvement despite all
-test agents being "thinker" archetypes, suggesting emergent differentiation
-from a homogeneous starting population.
-
-## Full Model Comparison — Cross-Agent Divergence (std)
-
-| Dimension | Lewis 1.0 | Base LLaMA | Haiku | Sonnet | L/B | L/H | L/S |
-|---|---|---|---|---|---|---|---|
-| Skepticism | 0.215 | 0.101 | 0.140 | 0.149 | **2.1x** | **1.5x** | **1.4x** |
-| Verbosity | 0.131 | 0.039 | 0.020 | 0.077 | **3.4x** | **6.6x** | **1.7x** |
-| Emotional Valence | 0.135 | 0.052 | 0.075 | 0.175 | **2.6x** | **1.8x** | 0.8x |
-| Abstraction | 0.152 | 0.025 | 0.034 | 0.044 | **6.1x** | **4.5x** | **3.5x** |
-| Assertiveness | 0.112 | 0.083 | 0.092 | 0.108 | **1.4x** | **1.2x** | **1.0x** |
-| **AVERAGE** | **0.149** | 0.060 | 0.072 | 0.111 | **3.1x** | **2.1x** | **1.3x** |
+| Dimension | Lewis 1.0 | Base LLaMA | Haiku | Sonnet | Lewis/Base |
+|-----------|-----------|------------|-------|--------|------------|
+| Skepticism | 0.215 | 0.101 | 0.140 | 0.149 | **2.1x** |
+| Verbosity | 0.131 | 0.039 | 0.020 | 0.077 | **3.4x** |
+| Emotional Valence | 0.135 | 0.052 | 0.075 | 0.175 | **2.6x** |
+| Abstraction | 0.152 | 0.025 | 0.034 | 0.044 | **6.1x** |
+| Assertiveness | 0.112 | 0.083 | 0.092 | 0.108 | **1.4x** |
+| **Average** | **0.149** | 0.060 | 0.072 | 0.111 | **3.1x** |
 
 Lewis 1.0 beats base LLaMA on 5/5 dimensions (3.1x avg).
 Lewis 1.0 beats Claude Haiku on 5/5 dimensions (2.1x avg).
 Lewis 1.0 beats Claude Sonnet on 4/5 dimensions (1.3x avg).
 
-## Next Steps
+---
 
-- [x] Compare against Claude Sonnet, Haiku
-- [x] Temporal divergence analysis (divergence grows 1.0x → 2.5x over 7 days)
-- [ ] Phase 2: 10,000 agents on Lewis 1.0, train Lewis 2.0 (in progress — 10K agents seeded, training running)
+## Lewis 1.5 Training Details
+
+| Parameter | Value |
+|-----------|-------|
+| Base Model | LLaMA 3.1 8B Instruct |
+| Method | QLoRA |
+| Training Pairs | ~370K |
+| Source Agents | ~2,900 (expanded from 474 ancestors) |
+| Memory Architecture | Structured external memory (Supabase) |
+| Inference | vLLM on RTX A6000 |
+| Cost/response | ~$0.002 |
+
+---
+
+**Methodology:** [METHODOLOGY.md](METHODOLOGY.md)
+**Scoring rubric:** [eval/rubric.md](eval/rubric.md)
+**Evaluation code:** [eval/evaluate.py](eval/evaluate.py)
