@@ -64,14 +64,14 @@ Lewis memory cost: **$0 at any scale.** Opus memory cost scales linearly with co
 ## What This Repo Contains
 
 ```
-BENCHMARK_RESULTS.md  — Full Lewis 1.0 + 1.5 benchmark results
-METHODOLOGY.md        — Pre-registered methodology
+BENCHMARK_RESULTS.md  — Full Lewis 1.5 benchmark results (6 axes)
+METHODOLOGY.md        — Evaluation methodology
 eval/
   prompts.json        — 50 open-ended test prompts (5 categories)
   evaluate.py         — Scoring pipeline
   rubric.md           — Scoring rubric (5 personality dimensions)
 results/
-  summary.md          — Lewis 1.0 results summary
+  summary.md          — Lewis 1.0 historical results (superseded by 1.5)
 ```
 
 ## Reproduce the Benchmark

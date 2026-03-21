@@ -1,12 +1,13 @@
-# Lewis Benchmark Results
+# Lewis 1.5 Benchmark Results
 
-## Lewis 1.5 — Full 6-Axis Evaluation (March 20, 2026)
-
+**Evaluated:** March 20, 2026
 **Judge:** Claude Sonnet 4.5
 **Agents:** 10 personas, consistent across all models
-**Prompts:** 50 open-ended personality prompts per agent + adversarial prompts + 100-conversation memory test
+**Prompts:** 50 open-ended personality prompts + adversarial prompts + 100-conversation memory test
 
-### Head-to-Head: Lewis 1.5 vs Claude Opus
+---
+
+## Head-to-Head: Lewis 1.5 vs Claude Opus
 
 | Axis | Lewis 1.5 | Opus | Winner | Notes |
 |------|-----------|------|--------|-------|
@@ -19,7 +20,9 @@
 
 **Result: Lewis wins or matches on 5 of 6 axes.**
 
-### Full Model Comparison
+---
+
+## Full Model Comparison
 
 | Axis | Lewis 1.5 | Opus | Sonnet | Haiku |
 |------|-----------|------|--------|-------|
@@ -30,7 +33,9 @@
 | Belief Realism | 43% | 43% | — | — |
 | Temporal Consistency | 35.1% | **46.1%** | — | — |
 
-### Cost Per Response
+---
+
+## Cost Per Response
 
 | Model | Inference cost | Memory cost (100 convos) | Memory cost (10K agents) |
 |-------|---------------|-------------------------|--------------------------|
@@ -41,7 +46,7 @@
 
 ---
 
-## Persistent Memory Benchmark Details
+## Persistent Memory Benchmark
 
 **Setup:** Single agent, 100 conversations, 7 facts planted in conversations 1–7. Recall tested at turns 10, 25, 50, 75, 100.
 
@@ -49,7 +54,7 @@
 
 **Opus architecture:** Full conversation history appended to context window. Prompt grows linearly.
 
-### Token Growth Per Turn
+### Token Growth
 
 | Turn | Lewis tokens | Opus tokens | Lewis cost | Opus cost |
 |------|-------------|-------------|------------|-----------|
@@ -60,7 +65,7 @@
 | 75 | 996 | 22,189 | $0.00 | $11.80 |
 | 100 | 1,001 | 33,035 | $0.00 | $24.19 |
 
-### Fact Recall Rate
+### Recall Rate
 
 | Checkpoint | Lewis (of 7 facts) | Opus (of 7 facts) |
 |------------|--------------------|--------------------|
@@ -74,43 +79,7 @@ Opus achieves perfect recall but at exponentially growing cost. Lewis maintains 
 
 ---
 
-## Lewis 1.0 — Personality Divergence Benchmark (March 17, 2026)
-
-Lewis 1.0 baseline results from the initial training run. See the Lewis 1.5 results above for the current model.
-
-### Training Details
-
-| Parameter | Value |
-|-----------|-------|
-| Base Model | LLaMA 3.1 8B Instruct |
-| Method | QLoRA (Unsloth) |
-| Training Pairs | 96,905 |
-| Source Agents | 474 |
-| Epochs | 3 |
-| GPU | H100 SXM (RunPod) |
-| Training Time | 4h 25min |
-| Final Eval Loss | 0.1195 |
-| GPU Cost | ~$30 |
-| Data Generation Cost | ~$1,200 |
-
-### Cross-Agent Divergence (std, higher = more distinct)
-
-| Dimension | Lewis 1.0 | Base LLaMA | Haiku | Sonnet | Lewis/Base |
-|-----------|-----------|------------|-------|--------|------------|
-| Skepticism | 0.215 | 0.101 | 0.140 | 0.149 | **2.1x** |
-| Verbosity | 0.131 | 0.039 | 0.020 | 0.077 | **3.4x** |
-| Emotional Valence | 0.135 | 0.052 | 0.075 | 0.175 | **2.6x** |
-| Abstraction | 0.152 | 0.025 | 0.034 | 0.044 | **6.1x** |
-| Assertiveness | 0.112 | 0.083 | 0.092 | 0.108 | **1.4x** |
-| **Average** | **0.149** | 0.060 | 0.072 | 0.111 | **3.1x** |
-
-Lewis 1.0 beats base LLaMA on 5/5 dimensions (3.1x avg).
-Lewis 1.0 beats Claude Haiku on 5/5 dimensions (2.1x avg).
-Lewis 1.0 beats Claude Sonnet on 4/5 dimensions (1.3x avg).
-
----
-
-## Lewis 1.5 Training Details
+## Lewis 1.5 Training
 
 | Parameter | Value |
 |-----------|-------|
@@ -124,6 +93,14 @@ Lewis 1.0 beats Claude Sonnet on 4/5 dimensions (1.3x avg).
 
 ---
 
+## Historical: Lewis 1.0 (March 17, 2026)
+
+Lewis 1.0 was the initial proof-of-concept trained on 96,905 pairs from the original 474-agent simulation. It beat base LLaMA on 5/5 personality dimensions (3.1x avg divergence), beat Haiku on 5/5, and beat Sonnet on 4/5. Lewis 1.5 supersedes 1.0 with 4x more training data, 6x more source agents, and the persistent memory architecture.
+
+Full 1.0 results are archived in `results/summary.md`.
+
+---
+
 **Methodology:** [METHODOLOGY.md](METHODOLOGY.md)
-**Scoring rubric:** [eval/rubric.md](eval/rubric.md)
 **Evaluation code:** [eval/evaluate.py](eval/evaluate.py)
+**Scoring rubric:** [eval/rubric.md](eval/rubric.md)
