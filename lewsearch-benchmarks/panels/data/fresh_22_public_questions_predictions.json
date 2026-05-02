@@ -1,0 +1,381 @@
+{
+  "summary": {
+    "panel": "Fresh 22Q held-out v17 relaunch",
+    "n_scored": 14,
+    "loocv_mae_all_pp": 10.68,
+    "loocv_mae_ex_electoral_pp": 9.97,
+    "five_fold_mae_all_pp": 10.68,
+    "five_fold_mae_ex_electoral_pp": 9.97,
+    "source": "docs/current/dirichlet_odir_all_panels_2026_04_19.md"
+  },
+  "questions": [
+    {
+      "id": "fresh_ohio_political_approval_00",
+      "panel": "fresh_22_heldout",
+      "city": "ohio",
+      "category": "political_approval",
+      "question_type": "political_approval",
+      "source": "Emerson College Polling",
+      "source_url": "https://emersoncollegepolling.com/ohio-2026-poll-democrats-make-gains-in-races-for-governor-and-us-senate/",
+      "field_dates": "2025-12-06 to 2025-12-08",
+      "question": "Do you approve or disapprove of the job Donald Trump is doing as President?",
+      "options": [
+        "Approve",
+        "Disapprove",
+        "Don't know"
+      ],
+      "ground_truth": [
+        0.46,
+        0.48,
+        0.06
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 11.99,
+      "calibrated_mae_pp": 11.31,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_ohio_political_approval_01",
+      "panel": "fresh_22_heldout",
+      "city": "ohio",
+      "category": "political_approval",
+      "question_type": "political_approval",
+      "source": "Emerson College Polling",
+      "source_url": "https://emersoncollegepolling.com/ohio-2026-poll-democrats-make-gains-in-races-for-governor-and-us-senate/",
+      "field_dates": "2025-12-06 to 2025-12-08",
+      "question": "Do you approve or disapprove of the job Mike DeWine is doing as Governor?",
+      "options": [
+        "Approve",
+        "Disapprove",
+        "Don't know"
+      ],
+      "ground_truth": [
+        0.26,
+        0.45,
+        0.29
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 8.33,
+      "calibrated_mae_pp": 8.14,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_ohio_policy_02",
+      "panel": "fresh_22_heldout",
+      "city": "ohio",
+      "category": "policy",
+      "question_type": "policy",
+      "source": "Public Opinion Strategies / Ohio Library Council and Ohio Township Association",
+      "source_url": "https://www.olc.org/assets/pdf/Public+Opinion+Strategies+Ohio+Statewide+Polling+Results/",
+      "field_dates": "2022-01-01 to 2022-12-31",
+      "question": "Do you believe you get your money\u2019s worth in services from your local libraries for the taxes you pay?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know / Not sure"
+      ],
+      "ground_truth": [
+        0.87,
+        0.13,
+        0.0
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 28.95,
+      "calibrated_mae_pp": 28.27,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_ohio_civic_trust_03",
+      "panel": "fresh_22_heldout",
+      "city": "ohio",
+      "category": "civic_trust",
+      "question_type": "civic_trust",
+      "source": "Public Opinion Strategies / Ohio Library Council Poll",
+      "source_url": "https://www.olc.org/assets/pdf/Public+Opinion+Strategies+Ohio+Statewide+Polling+Results/",
+      "field_dates": "Not specified in source",
+      "question": "How satisfied are you with your local public libraries?",
+      "options": [
+        "Very satisfied",
+        "Somewhat satisfied",
+        "Not satisfied"
+      ],
+      "ground_truth": [
+        0.51,
+        0.35,
+        0.14
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 12.96,
+      "calibrated_mae_pp": 12.0,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_georgia_political_approval_04",
+      "panel": "fresh_22_heldout",
+      "city": "georgia",
+      "category": "political_approval",
+      "question_type": "political_approval",
+      "source": "Marist Poll",
+      "source_url": "https://maristpoll.marist.edu/polls/u-s-presidential-contest-georgia-september-2024/",
+      "field_dates": "September 2024",
+      "question": "Do you approve or disapprove of the job President Biden is doing?",
+      "options": [
+        "Approve",
+        "Disapprove",
+        "No opinion/Don't know"
+      ],
+      "ground_truth": [
+        0.42,
+        0.52,
+        0.06
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 12.13,
+      "calibrated_mae_pp": 11.68,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_ohio_electoral_05",
+      "panel": "fresh_22_heldout",
+      "city": "ohio",
+      "category": "electoral",
+      "question_type": "electoral",
+      "source": "2024 Ohio Presidential Election Results",
+      "source_url": "https://en.wikipedia.org/wiki/2024_United_States_presidential_election_in_Ohio",
+      "field_dates": "2024-11-05",
+      "question": "2024 United States Presidential Election - Ohio",
+      "options": [
+        "Donald Trump",
+        "Kamala Harris",
+        "Chase Oliver",
+        "Richard Duncan"
+      ],
+      "ground_truth": [
+        0.5526,
+        0.4403,
+        0.0049,
+        0.0022
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 17.44,
+      "calibrated_mae_pp": 17.38,
+      "n_options": 4
+    },
+    {
+      "id": "fresh_georgia_electoral_10",
+      "panel": "fresh_22_heldout",
+      "city": "georgia",
+      "category": "electoral",
+      "question_type": "electoral",
+      "source": "2024 United States Presidential Election - Georgia Results",
+      "source_url": "https://en.wikipedia.org/wiki/United_States_presidential_elections_in_Georgia",
+      "field_dates": "2024-11-05 to 2024-11-05",
+      "question": "2024 Presidential Election Vote",
+      "options": [
+        "Donald Trump",
+        "Kamala Harris",
+        "Other"
+      ],
+      "ground_truth": [
+        0.5073,
+        0.4853,
+        0.0074
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 15.1,
+      "calibrated_mae_pp": 14.84,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_texas_policy_11",
+      "panel": "fresh_22_heldout",
+      "city": "texas",
+      "category": "policy",
+      "question_type": "policy",
+      "source": "UT Tyler Center for Opinion Research",
+      "source_url": "https://www.uttyler.edu/about/news/pressrelease/2025/06242025.php",
+      "field_dates": "2025-05-28 to 2025-06-07",
+      "question": "Do you support or oppose Senate Bill 2, which provides vouchers for private school children?",
+      "options": [
+        "In favor",
+        "Opposed",
+        "Undecided/Don't know"
+      ],
+      "ground_truth": [
+        0.54,
+        0.31,
+        0.15
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 9.64,
+      "calibrated_mae_pp": 9.51,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_texas_civic_trust_12",
+      "panel": "fresh_22_heldout",
+      "city": "texas",
+      "category": "civic_trust",
+      "question_type": "civic_trust",
+      "source": "Secure Elections Project Poll (New Bridge Strategy)",
+      "source_url": "https://www.secureelectionsproject.org/poll-texas-gop-voters-trust/",
+      "field_dates": "2023-04-27 to 2023-05-02",
+      "question": "Do you have confidence in your local election officials to fairly and accurately count votes and declare a winner?",
+      "options": [
+        "Great deal of confidence",
+        "Some confidence",
+        "Not much confidence",
+        "No confidence at all"
+      ],
+      "ground_truth": [
+        0.31,
+        0.55,
+        0.13,
+        0.01
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 15.33,
+      "calibrated_mae_pp": 15.23,
+      "n_options": 4
+    },
+    {
+      "id": "fresh_new_york_political_approval_13",
+      "panel": "fresh_22_heldout",
+      "city": "new_york",
+      "category": "political_approval",
+      "question_type": "political_approval",
+      "source": "Marist Poll",
+      "source_url": "https://maristpoll.marist.edu/polls/the-state-of-new-york-in-an-election-year-february-2026/",
+      "field_dates": "2026-02-16 to 2026-02-19",
+      "question": "Do you approve or disapprove of the job Governor Kathy Hochul is doing in office?",
+      "options": [
+        "Approve",
+        "Disapprove",
+        "Unsure"
+      ],
+      "ground_truth": [
+        0.4554,
+        0.396,
+        0.1485
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 7.46,
+      "calibrated_mae_pp": 7.45,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_new_york_political_approval_14",
+      "panel": "fresh_22_heldout",
+      "city": "new_york",
+      "category": "political_approval",
+      "question_type": "political_approval",
+      "source": "Marist Poll",
+      "source_url": "https://maristpoll.marist.edu/polls/the-state-of-new-york-in-an-election-year-february-2026/",
+      "field_dates": "2026-02-16 to 2026-02-19",
+      "question": "Do you have a favorable or unfavorable opinion of Governor Hochul?",
+      "options": [
+        "Favorable",
+        "Unfavorable",
+        "Never heard of/Unsure"
+      ],
+      "ground_truth": [
+        0.48,
+        0.39,
+        0.13
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 5.72,
+      "calibrated_mae_pp": 5.72,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_new_york_policy_15",
+      "panel": "fresh_22_heldout",
+      "city": "new_york",
+      "category": "policy",
+      "question_type": "policy",
+      "source": "EDF Poll",
+      "source_url": "https://www.edf.org/media/poll-new-york-voters-support-state-leaders-who-stand-firm-state-climate-laws",
+      "field_dates": "2024-09-01 to 2024-09-10",
+      "question": "Do New York voters support state leaders who stand firm on state climate laws?",
+      "options": [
+        "Support",
+        "Oppose",
+        "Don't know"
+      ],
+      "ground_truth": [
+        0.6,
+        0.3,
+        0.1
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 10.74,
+      "calibrated_mae_pp": 10.29,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_california_policy_18",
+      "panel": "fresh_22_heldout",
+      "city": "california",
+      "category": "policy",
+      "question_type": "policy",
+      "source": "USC California Elections and Policy Poll (CEPP)",
+      "source_url": "https://today.usc.edu/wp-content/uploads/2024/09/California-Elections-and-Policy-Poll-Statewide-Poll-Toplines-and-Crosstabs-FINAL.pdf",
+      "field_dates": "2024-09-12 to 2024-09-25",
+      "question": "Do you support or oppose Proposition 5?",
+      "options": [
+        "Support",
+        "Oppose",
+        "Undecided"
+      ],
+      "ground_truth": [
+        0.543,
+        0.252,
+        0.205
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 6.37,
+      "calibrated_mae_pp": 6.27,
+      "n_options": 3
+    },
+    {
+      "id": "fresh_california_civic_trust_20",
+      "panel": "fresh_22_heldout",
+      "city": "california",
+      "category": "civic_trust",
+      "question_type": "civic_trust",
+      "source": "PPIC Statewide Survey",
+      "source_url": "https://www.ppic.org/publication/ppic-statewide-survey-californians-and-their-government-june-2025/",
+      "field_dates": "2025-05-22 to 2025-05-29",
+      "question": "How much of the time do you trust the federal government to do what is right?",
+      "options": [
+        "Just about always",
+        "Most of the time",
+        "Only some of the time"
+      ],
+      "ground_truth": [
+        0.0202,
+        0.1515,
+        0.8283
+      ],
+      "raw_prediction": null,
+      "calibrated_prediction": null,
+      "raw_mae_pp": 20.79,
+      "calibrated_mae_pp": 21.01,
+      "n_options": 3
+    }
+  ]
+}

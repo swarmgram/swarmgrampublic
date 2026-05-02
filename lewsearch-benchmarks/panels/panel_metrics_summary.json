@@ -1,0 +1,46 @@
+{
+  "headline_cross_validated_panels": [
+    {
+      "panel": "TX state v17 (UT/Texas Politics Project)",
+      "n_all": 120,
+      "n_ex_electoral": 97,
+      "five_fold_mae_all_pp": 6.35,
+      "five_fold_mae_ex_electoral_pp": 4.88,
+      "source": "docs/current/dirichlet_odir_all_panels_2026_04_19.md"
+    },
+    {
+      "panel": "CA state v17 (PPIC)",
+      "n_all": 175,
+      "n_ex_electoral": 148,
+      "five_fold_mae_all_pp": 8.01,
+      "five_fold_mae_ex_electoral_pp": 7.77,
+      "source": "docs/current/dirichlet_odir_all_panels_2026_04_19.md"
+    },
+    {
+      "panel": "Combined TX + CA state v17",
+      "n_all": 295,
+      "n_ex_electoral": 245,
+      "five_fold_mae_all_pp": 7.45,
+      "five_fold_mae_ex_electoral_pp": 6.83,
+      "source": "docs/current/dirichlet_odir_all_panels_2026_04_19.md"
+    },
+    {
+      "panel": "Fresh 22Q held-out v17 relaunch",
+      "n_scored": 14,
+      "loocv_mae_all_pp": 10.68,
+      "loocv_mae_ex_electoral_pp": 9.97,
+      "five_fold_mae_all_pp": 10.68,
+      "five_fold_mae_ex_electoral_pp": 9.97,
+      "source": "docs/current/dirichlet_odir_all_panels_2026_04_19.md"
+    }
+  ],
+  "public_artifacts": {
+    "state_survey_rows": 295,
+    "fresh_22_rows": 14
+  },
+  "notes": [
+    "Headline panel MAEs are the published cross-validation metrics from the all-panels Dirichlet-ODIR report.",
+    "State per-question rows expose public source text, ground truth, and a saved calibrated prediction artifact for inspection.",
+    "Fresh 22Q rows include the scored subset with public sources and predictions where available."
+  ]
+}
