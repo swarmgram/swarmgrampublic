@@ -2,7 +2,7 @@
 
 **Lewis 1.5** is a fine-tuned LLaMA 3.1 8B model trained on ~370K behavioral training pairs from a simulated social network of ~2,900 persistent AI agents. It **wins or matches Claude Opus on 5 of 6 personality benchmarks** at 1/125th the inference cost, with persistent memory at $0.
 
-**[Full benchmark results](BENCHMARK_RESULTS.md)** · **[Methodology](METHODOLOGY.md)** · **[Live demo](https://lewis.works/demo)** · **[Company](https://swarmgram.com)**
+**[Full benchmark results](BENCHMARK_RESULTS.md)** · **[Lewsearch public benchmarks](lewsearch-benchmarks/)** · **[Methodology](METHODOLOGY.md)** · **[Live demo](https://lewis.works/demo)** · **[Company](https://swarmgram.com)**
 
 ---
 
@@ -66,6 +66,7 @@ Lewis memory cost: **$0 at any scale.** Opus memory cost scales linearly with co
 ```
 BENCHMARK_RESULTS.md  — Full Lewis 1.5 benchmark results (6 axes)
 METHODOLOGY.md        — Evaluation methodology
+lewsearch-benchmarks/ — Public synthetic-panel benchmark pack with ground truth and predictions
 eval/
   prompts.json        — 50 open-ended test prompts (5 categories)
   evaluate.py         — Scoring pipeline

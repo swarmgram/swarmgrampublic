@@ -1,0 +1,24 @@
+{
+  "benchmark": "Lewsearch public n=10,000 synthetic panel benchmark",
+  "generated_from": {
+    "questions": "benchmark_v2_questions.json",
+    "predictions": "calibration_results.json"
+  },
+  "n_questions": 148,
+  "raw_mae_pp": 10.78,
+  "calibrated_mae_pp": 8.68,
+  "category_mae_pp": {
+    "brand": 7.618,
+    "civic_legal": 7.841,
+    "directional": 8.724,
+    "electoral": 8.55,
+    "policy": 9.194,
+    "political_approval": 9.236
+  },
+  "median_calibrated_mae_pp": 6.89,
+  "public_release_notes": [
+    "Contains public benchmark questions, cited public ground truth, and aggregate Lewsearch predictions.",
+    "Does not include training data, private agent records, API keys, router thresholds, raw agent-level probabilities, or production code.",
+    "Customer studies do not carry third-party ground truth; benchmark MAE is a validation proxy, not a guarantee for any single custom question."
+  ]
+}
