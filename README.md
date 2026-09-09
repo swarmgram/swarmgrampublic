@@ -66,6 +66,7 @@ Lewis memory cost: **$0 at any scale.** Opus memory cost scales linearly with co
 ```
 BENCHMARK_RESULTS.md  — Full Lewis 1.5 benchmark results (6 axes)
 METHODOLOGY.md        — Evaluation methodology
+docs/current/         — Timed public protocol notes (Issue 05 Michigan pre-reg, 2026-09-09)
 lewsearch-benchmarks/ — Public synthetic-panel benchmark pack with ground truth and predictions
   panels/          — TX UT/TPP, CA PPIC, and fresh 22Q held-out public benchmark summaries
 eval/
